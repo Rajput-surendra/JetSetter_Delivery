@@ -26,7 +26,7 @@ class CommanDesingWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 5.0),
       child: Container(
         width: 95,
-        height: 55,
+        height: 60,
         decoration: BoxDecoration(
           gradient: currentSelected == index
               ? LinearGradient(
@@ -62,8 +62,9 @@ class CommanDesingWidget extends StatelessWidget {
 
             if (index == 0) {
               homeProvider!.getCurrentOrder(update, context, lat, long);
-            } else {
-              if (index == 2) {
+            }
+            else {
+              if (index == 1) {
                 homeProvider!.activeStatus = "shipped";
                 homeProvider!.getOrder(update, context);
               } else if (index == 3) {
@@ -71,7 +72,7 @@ class CommanDesingWidget extends StatelessWidget {
                 homeProvider!.getOrder(update, context);
               } else {
                 homeProvider!.activeStatus = "";
-                homeProvider!.getOrder(update, context);
+
               }
             }
 
@@ -83,8 +84,8 @@ class CommanDesingWidget extends StatelessWidget {
             // update();
           },
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsetsDirectional.only(
@@ -125,25 +126,25 @@ class CommanDesingWidget extends StatelessWidget {
                       } else {
                         return "";
                       }
-                    } else if (index == 2) {
-                      if (homeProvider!.picked != null) {
-                        return homeProvider!.picked!;
-                      } else {
-                        return "";
-                      }
-                      //   }
-                      // else if (index == 3) {
-                      //   if (homeProvider!.picked != null) {
-                      //     return homeProvider!.picked!;
-                      //   } else {
-                      //     return "";
-                      //   }
-                    } else if (index == 3) {
-                      if (homeProvider!.delivered != null) {
-                        return homeProvider!.delivered!;
-                      } else {
-                        return "";
-                      }
+                    // } else if (index == 2) {
+                    //   if (homeProvider!.picked != null) {
+                    //     return homeProvider!.picked!;
+                    //   } else {
+                    //     return "";
+                    //   }
+                    //   //   }
+                    //   // else if (index == 3) {
+                    //   //   if (homeProvider!.picked != null) {
+                    //   //     return homeProvider!.picked!;
+                    //   //   } else {
+                    //   //     return "";
+                    //   //   }
+                    // } else if (index == 3) {
+                    //   if (homeProvider!.delivered != null) {
+                    //     return homeProvider!.delivered!;
+                    //   } else {
+                    //     return "";
+                    //   }
 
                       // } else if (index == 6) {
                       //   if (homeProvider!.returned != null) {

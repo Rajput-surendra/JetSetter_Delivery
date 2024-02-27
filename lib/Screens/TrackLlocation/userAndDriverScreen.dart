@@ -13,8 +13,6 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../../Helper/Constant.dart';
 
-
-
 class UserMapScreen extends StatefulWidget {
   String? driverId,addressId,sellerId,status;
   String?userlat;
@@ -70,6 +68,9 @@ class _UserMapScreenState extends State<UserMapScreen> {
               BitmapDescriptor.defaultMarkerWithHue(90),false
             );
             _getPolyline();
+            setState(() {
+
+            });
 
     });
   }
@@ -97,7 +98,7 @@ class _UserMapScreenState extends State<UserMapScreen> {
       userLat =  double.parse(finalResult['drop_lat_lang']['latitude'].toString());
       userLong =  double.parse(finalResult['drop_lat_lang']['longitude'].toString());
       userLocation = LatLng(userLat, userLong);
-      _getPolyline();
+     //_getPolyline();
       _addMarker(
         LatLng(userLat, userLong),
         "origin",
@@ -130,9 +131,10 @@ class _UserMapScreenState extends State<UserMapScreen> {
     super.initState();
     _getAddressFromLatLng();
     callApis();
-
-    _startTimer();
-
+    getLatLongApi();
+    Future.delayed(Duration(seconds: 3),() {
+      _startTimer();
+    },);
 
     userLocation = LatLng(double.parse(userLat.toString() ?? '0.0'),double.parse(userLong.toString() ?? '0.0'));
     // _startTimer();

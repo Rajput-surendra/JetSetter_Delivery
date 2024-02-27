@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:deliveryboy_multivendor/Screens/OrderDetail/Widget/DeliveryMap.dart';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../Helper/color.dart';
@@ -8,7 +8,7 @@ import '../../../Model/order_model.dart';
 import '../../../Widget/setSnackbar.dart';
 import '../../../Widget/translateVariable.dart';
 import '../../../Widget/validation.dart';
-import '../../TrackLlocation/seller_driver.dart';
+import '../../Home/home.dart';
 
 class ShippingDetails extends StatelessWidget {
   Order_Model model;
@@ -90,9 +90,13 @@ class ShippingDetails extends StatelessWidget {
                     visible: model.itemList!.first.status == 'shipped',
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => DeliveryAddMap(DeliveryAdd:model.address! ),
-                        ));
+                        String url =
+                            "https://www.google.com/maps/dir/?api=1&origin=${lat},${long}&destination=${model.latitude},${model.longitude}&travel_mode=driving&dir_action=navigate";
+                        print("aaaaaaaaaaaaaaaa$url");
+                        launch(url);
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //   builder: (context) => DeliveryAddMap(DeliveryAdd:model.address! ),
+                        // ));
                       },
                       child: Text(
                         'Get Directions',

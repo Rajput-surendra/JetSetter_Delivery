@@ -71,6 +71,9 @@ class _SellerDriverState extends State<SellerDriver> {
           BitmapDescriptor.defaultMarkerWithHue(90),false
       );
       _getPolyline();
+      setState(() {
+
+      });
       //call update  location api
 
     });
@@ -98,7 +101,10 @@ class _SellerDriverState extends State<SellerDriver> {
 
       sellerLat = double.parse(finalResult['store_lat_lang']['latitude'].toString());
       sellerLong =  double.parse(finalResult['store_lat_lang']['longitude'].toString());
-      _getPolyline();
+      setState(() {
+
+      });
+     // _getPolyline();
       _addMarker(
           LatLng(sellerLat, sellerLong),
           "origin",
@@ -130,9 +136,11 @@ class _SellerDriverState extends State<SellerDriver> {
   void initState() {
     super.initState();
     _getAddressFromLatLng();
-    callApis();
-
-    _startTimer();
+      callApis();
+    getLatLongApi();
+    Future.delayed(Duration(seconds: 3),() {
+      _startTimer();
+    },);
 
 
     driverLocation = LatLng(double.parse(dNewLat.toString() ?? '0.0'),double.parse(dNewLong.toString() ?? '0.0'));

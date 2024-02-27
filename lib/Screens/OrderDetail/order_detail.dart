@@ -76,6 +76,52 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
     );
   }
 
+  double userLat = 0.0 ;
+  double userLong = 0.0 ;
+
+  // getLatLongApi() async {
+  //   // setState(() {
+  //   //   isLoading =true;
+  //   // });
+  //   var headers = {
+  //     'Cookie': 'ci_session=7180d0f1d25ed806795e94e0a87cf9ea327dd73e'
+  //   };
+  //   var request = http.MultipartRequest('POST', Uri.parse('${baseUrl}get_drop_lat_lang'));
+  //   request.fields.addAll({
+  //     'address_id':widget.addressId.toString(),
+  //     'driver_id':widget.driverId.toString(),
+  //     'store_id':widget.sellerId.toString()
+  //   });
+  //   print('____Som______${request.fields}_________');
+  //   request.headers.addAll(headers);
+  //
+  //   http.StreamedResponse response = await request.send();
+  //
+  //   if (response.statusCode == 200) {
+  //     var result  =  await response.stream.bytesToString();
+  //     var finalResult = jsonDecode(result);
+  //
+  //     userLat =  double.parse(finalResult['drop_lat_lang']['latitude'].toString());
+  //     userLong =  double.parse(finalResult['drop_lat_lang']['longitude'].toString());
+  //     //_getPolyline();
+  //
+  //
+  //     // Add destination marker
+  //     // _addMarker(
+  //     //   LatLng(dNewLat, dNewLong),
+  //     //   "destination",
+  //     //   BitmapDescriptor.defaultMarkerWithHue(90),false
+  //     // );
+  //     // init();
+  //   }
+  //
+  //   else {
+  //     print(response.reasonPhrase);
+  //   }
+  //   setState(() {
+  //     isLoading =false;    });
+  //
+  // }
   @override
   void dispose() {
     orderDetailProvider!.buttonController!.dispose();

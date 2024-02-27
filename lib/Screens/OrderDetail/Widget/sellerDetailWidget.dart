@@ -9,6 +9,8 @@ import '../../../Widget/parameterString.dart';
 import '../../../Widget/setSnackbar.dart';
 import '../../../Widget/translateVariable.dart';
 import '../../../Widget/validation.dart';
+
+import '../../Home/home.dart';
 import '../../TrackLlocation/seller_driver.dart';
 import '../../TrackLlocation/userAndDriverScreen.dart';
 import '../order_detail.dart';
@@ -106,26 +108,30 @@ class _SellerDetailsState extends State<SellerDetails> {
                                   if (widget
                                           .model.itemList![widget.index].status ==
                                       "driver accept") {
+                                    String url =
+                                        "https://www.google.com/maps/dir/?api=1&origin=${lat.toString()},${long.toString()}&destination=${widget.model.itemList![widget.index].sellerLatitude},${widget.model.itemList![widget.index].sellerLongitude}&travel_mode=driving&dir_action=navigate";
+                                    print("this is a dropPoint-------------->${url}");
+                                    launch(url);
                                     print(
                                         '____Som______${widget.model.itemList![widget.index].status}_________');
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => SellerDriver(
-                                              driverId: widget
-                                                  .model
-                                                  .itemList![widget.index]
-                                                  .deliveryId,
-                                              sellerId: widget
-                                                  .model
-                                                  .itemList![widget.index]
-                                                  .sellerId,
-                                              addressId: widget.model.addressId,
-                                              status: widget
-                                                  .model
-                                                  .itemList![widget.index]
-                                                  .status),
-                                        ));
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //       builder: (context) => SellerDriver(
+                                    //           driverId: widget
+                                    //               .model
+                                    //               .itemList![widget.index]
+                                    //               .deliveryId,
+                                    //           sellerId: widget
+                                    //               .model
+                                    //               .itemList![widget.index]
+                                    //               .sellerId,
+                                    //           addressId: widget.model.addressId,
+                                    //           status: widget
+                                    //               .model
+                                    //               .itemList![widget.index]
+                                    //               .status),
+                                    //     ));
                                   }
 
                                   // Navigator.push(context, MaterialPageRoute(builder: (context) => MapScreen();

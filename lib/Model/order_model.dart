@@ -171,6 +171,8 @@ class OrderItem {
       sellerAddress,
       storeLatitude,
       storeLongitude,
+      sellerLongitude,
+      sellerLatitude,
       storeImage;
 
   List<String?>? listStatus = [];
@@ -204,6 +206,8 @@ class OrderItem {
       this.sellerMobileNumber,
       this.sellerAddress,
       this.storeLatitude,
+      this.sellerLatitude,
+      this.sellerLongitude,
       this.storeLongitude,
       this.storeImage});
 
@@ -218,6 +222,8 @@ class OrderItem {
     }
     return OrderItem(
         id: json[ID] ?? "",
+        sellerLatitude: json['seller_latitude'],
+        sellerLongitude: json['seller_longitude'],
         sellerId: json['seller_id'] ?? "",
         deliveryId: json['delivery_boy_id'] ?? "",
         qty: json[QUANTITY] ?? "",

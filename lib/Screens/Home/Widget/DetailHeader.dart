@@ -21,65 +21,93 @@ class DetailHeader extends StatelessWidget {
         left: 15,
         right: 15,
       ),
-      child: SizedBox(
-        width: deviceWidth,
-        height: 70,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
-            CommanDesingWidget(
+      child: Row(
+        children: [
+          Expanded(
+            child: CommanDesingWidget(
               index: 0,
               title: 'Current',
               update: update,
               lat: lat,
               long: long,
             ),
-            CommanDesingWidget(
+          ),
+          Expanded(
+            child: CommanDesingWidget(
               index: 1,
               title: 'Orders',
               update: update,
               lat: lat,
               long: long,
             ),
-            // CommanDesingWidget(
-            //   index: 2,
-            //   title: 'Processed',
-            //   update: update,
-            //   lat: lat,
-            //   long: long,
-            // ),
-            // CommanDesingWidget(
-            //   index: 1,
-            //   title: 'Processed',
-            //   update: update,
-            // ),
-            // CommanDesingWidget(
-            //   index: 2,
-            //   title: 'Picked Up',
-            //   update: update,
-            //   lat: lat,
-            //   long: long,
-            // ),
-            // CommanDesingWidget(
-            //   index: 3,
-            //   title: 'Delivered',
-            //   lat: lat,
-            //   long: long,
-            //   update: update,
-            // ),
-            // CommanDesingWidget(
-            //   index: 5,
-            //   title: 'Cancelled ',
-            //   update: update,
-            // ),
-            // CommanDesingWidget(
-            //   index: 6,
-            //   title: 'Returned',
-            //   update: update,
-            // ),
-          ],
-        ),
+          ),
+        ],
       ),
+
+
+      // SizedBox(
+      //
+      //   height: 70,
+      //   child: ListView(
+      //     scrollDirection: Axis.horizontal,
+      //     children: [
+      //       Expanded(
+      //         child: CommanDesingWidget(
+      //           index: 0,
+      //           title: 'Current',
+      //           update: update,
+      //           lat: lat,
+      //           long: long,
+      //         ),
+      //       ),
+      //       Expanded(
+      //         child: CommanDesingWidget(
+      //           index: 1,
+      //           title: 'Orders',
+      //           update: update,
+      //           lat: lat,
+      //           long: long,
+      //         ),
+      //       ),
+      //       // CommanDesingWidget(
+      //       //   index: 2,
+      //       //   title: 'Processed',
+      //       //   update: update,
+      //       //   lat: lat,
+      //       //   long: long,
+      //       // ),
+      //       // CommanDesingWidget(
+      //       //   index: 1,
+      //       //   title: 'Processed',
+      //       //   update: update,
+      //       // ),
+      //       // CommanDesingWidget(
+      //       //   index: 2,
+      //       //   title: 'Picked Up',
+      //       //   update: update,
+      //       //   lat: lat,
+      //       //   long: long,
+      //       // ),
+      //       // CommanDesingWidget(
+      //       //   index: 3,
+      //       //   title: 'Delivered',
+      //       //   lat: lat,
+      //       //   long: long,
+      //       //   update: update,
+      //       // ),
+      //       // CommanDesingWidget(
+      //       //   index: 5,
+      //       //   title: 'Cancelled ',
+      //       //   update: update,
+      //       // ),
+      //       // CommanDesingWidget(
+      //       //   index: 6,
+      //       //   title: 'Returned',
+      //       //   update: update,
+      //       // ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

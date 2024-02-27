@@ -22,7 +22,8 @@ import '../../Widget/validation.dart';
 import 'Widget/DetailHeader.dart';
 import 'Widget/orderIteam.dart';
 import 'package:http/http.dart' as http;
-
+var lat = "";
+var long = "";
 class Home extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -104,8 +105,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
     super.initState();
   }
 
-  var lat = "";
-  var long = "";
+
 
   Position? currentLocation;
 

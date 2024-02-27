@@ -112,6 +112,7 @@ class HomeProvider extends ChangeNotifier {
             //returned = getdata["returned"];
             // awaiting = getdata["awaiting"];
             tempList.clear();
+            orderList.clear();
             var data = getdata["data"];
 
             tempList = (data as List)
@@ -164,12 +165,12 @@ class HomeProvider extends ChangeNotifier {
           LIMIT: perPage.toString(),
           OFFSET: offset.toString()
         };
-        if (activeStatus != "") {
-          if (activeStatus == awaitingPayment) {
-            activeStatus = "awaiting";
-          }
-          parameter[ACTIVE_STATUS] = activeStatus;
-        }
+        // if (activeStatus != "") {
+        //   if (activeStatus == awaitingPayment) {
+        //     activeStatus = "awaiting";
+        //   }
+        //   parameter[ACTIVE_STATUS] = activeStatus;
+        // }
 
         print("param****order*****$parameter");
         var getdata = await HomeRepository.getOrders(
@@ -190,6 +191,7 @@ class HomeProvider extends ChangeNotifier {
             //returned = getdata["returned"];
             // awaiting = getdata["awaiting"];
             tempList.clear();
+            orderList.clear();
             var data = getdata["data"];
 
             tempList = (data as List)
