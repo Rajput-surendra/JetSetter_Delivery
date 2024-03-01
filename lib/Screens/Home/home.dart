@@ -71,6 +71,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    inIt();
     _startTimer();
     homeProvider = Provider.of<HomeProvider>(context, listen: false);
     settingProvider = Provider.of<SettingProvider>(context, listen: false);
@@ -81,7 +82,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
     homeProvider!.isLoadingItems = true;
     homeProvider!.orderList.clear();
     homeProvider!.getSetting(context);
-    homeProvider!.getCurrentOrder(setStateNow, context, lat, long);
+
 
     //  homeProvider!.getCurrentOrder(setStateNow, context, lat, long);
     homeProvider!.getUserDetail(setStateNow, context);
@@ -137,6 +138,11 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
     timer = Timer.periodic(Duration(seconds: 5), (timer) async {
       await getUserCurrentLocation();
     });
+  }
+
+  inIt()async{
+    await getUserCurrentLocation();
+    homeProvider!.getCurrentOrder(setStateNow, context, lat, long);
   }
 
   var venderId;
@@ -592,7 +598,6 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
       'lat': "${lat1.toString()}",
       'lang': "${long1.toString()}"
     });
-    print('__________${request.fields}_________');
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
