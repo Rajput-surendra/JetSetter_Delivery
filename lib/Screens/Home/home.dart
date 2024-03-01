@@ -81,7 +81,9 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
     homeProvider!.isLoadingItems = true;
     homeProvider!.orderList.clear();
     homeProvider!.getSetting(context);
-  //  homeProvider!.getCurrentOrder(setStateNow, context, lat, long);
+    homeProvider!.getCurrentOrder(setStateNow, context, lat, long);
+
+    //  homeProvider!.getCurrentOrder(setStateNow, context, lat, long);
     homeProvider!.getUserDetail(setStateNow, context);
     final pushNotificationService = PushNotificationService(context: context);
     pushNotificationService.initialise();
@@ -120,7 +122,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
       prefs.setString('Lat', lat.toString());
       prefs.setString('Lon', long.toString());
       driverTrack(lat, long);
-      homeProvider!.getCurrentOrder(setStateNow, context, lat, long);
+
     } else if (status.isPermanentlyDenied) {
       openAppSettings();
     }
