@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:deliveryboy_multivendor/Helper/color.dart';
 import 'package:deliveryboy_multivendor/Helper/constant.dart';
 import 'package:deliveryboy_multivendor/Helper/push_notification_service.dart';
+import 'package:deliveryboy_multivendor/Widget/api.dart';
 import 'package:deliveryboy_multivendor/Widget/setSnackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -53,9 +54,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
 
   getSaveDetail() async {
     String getlng = await settingProvider!.getPrefrence(LAGUAGE_CODE) ?? '';
-
-    homeProvider!.selectLan =
-        homeProvider!.langCode.indexOf(getlng == '' ? "en" : getlng);
+    homeProvider!.selectLan = homeProvider!.langCode.indexOf(getlng == '' ? "en" : getlng);
   }
 
   Future<bool> onWillPopScope() {
@@ -82,7 +81,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
     homeProvider!.isLoadingItems = true;
     homeProvider!.orderList.clear();
     homeProvider!.getSetting(context);
-    homeProvider!.getCurrentOrder(setStateNow, context, lat, long);
+  //  homeProvider!.getCurrentOrder(setStateNow, context, lat, long);
     homeProvider!.getUserDetail(setStateNow, context);
     final pushNotificationService = PushNotificationService(context: context);
     pushNotificationService.initialise();
@@ -101,21 +100,15 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
       ),
     );
     homeProvider!.controller.addListener(_scrollListener);
-
     super.initState();
   }
 
-
-
   Position? currentLocation;
-
   Future getUserCurrentLocation() async {
     var status = await Permission.location.request();
     if (status.isDenied) {
     } else if (status.isGranted) {
-      await Geolocator.getCurrentPosition(
-              desiredAccuracy: LocationAccuracy.high)
-          .then((position) {
+      await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high).then((position) {
         if (mounted)
           setState(() {
             currentLocation = position;
@@ -127,6 +120,7 @@ class StateHome extends State<Home> with TickerProviderStateMixin {
       prefs.setString('Lat', lat.toString());
       prefs.setString('Lon', long.toString());
       driverTrack(lat, long);
+      homeProvider!.getCurrentOrder(setStateNow, context, lat, long);
     } else if (status.isPermanentlyDenied) {
       openAppSettings();
     }

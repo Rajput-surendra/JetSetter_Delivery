@@ -147,10 +147,7 @@ class HomeProvider extends ChangeNotifier {
     return null;
   }
 
-  Future<Null> getOrder(
-    Function update,
-    BuildContext context,
-  ) async {
+  Future<Null> getOrder(Function update, BuildContext context,) async {
     isNetworkAvail = await isNetworkAvailable();
     if (isNetworkAvail) {
       if (offset == 0) {
@@ -264,13 +261,11 @@ class HomeProvider extends ChangeNotifier {
     if (isNetworkAvail) {
       try {
         CUR_USERID = await settingProvider!.getPrefrence(ID);
-        homeProvider!.mobileNumber =
-            await settingProvider!.getPrefrence(MOBILE);
+        homeProvider!.mobileNumber = await settingProvider!.getPrefrence(MOBILE);
         var parameter = {ID: CUR_USERID};
         var getdata = await HomeRepository.getUserDetail(
           parameter: parameter,
         );
-
         bool error = getdata["error"];
         print("getdata user*****$getdata******$parameter****");
         if (!error) {
@@ -278,15 +273,12 @@ class HomeProvider extends ChangeNotifier {
           CUR_BALANCE = double.parse(data[BALANCE]).toString();
           CUR_BONUS = data[BONUS];
           // CUR_DRIVING_LICENSE = data[DRIVING_LICENSE];
-          settingProvider!
-              .setListPrefrence(DRIVING_LICENSE, CUR_DRIVING_LICENSE);
+          settingProvider!.setListPrefrence(DRIVING_LICENSE, CUR_DRIVING_LICENSE);
         }
         homeProvider!.isLoading = false;
-
         update();
       } on TimeoutException catch (_) {
         setSnackbar(getTranslated(context, somethingMSg)!, context);
-
         homeProvider!.isLoading = false;
         update();
       }
@@ -295,7 +287,6 @@ class HomeProvider extends ChangeNotifier {
       homeProvider!.isLoading = false;
       update();
     }
-
     return null;
   }
 
