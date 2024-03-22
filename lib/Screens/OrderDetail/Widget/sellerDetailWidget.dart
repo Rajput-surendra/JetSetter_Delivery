@@ -105,15 +105,20 @@ class _SellerDetailsState extends State<SellerDetails> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 onTap: () {
+                                  print('${widget.model.itemList![widget.index].sellerLatitude}');
+                                  print('${widget.model.itemList![widget.index].sellerLongitude}');
+                                  print('${widget.model.itemList![widget.index].sellerLongitude}');
+                                  print('${lat.toString()}');
+                                  print('${long.toString()}');
                                   if (widget
                                           .model.itemList![widget.index].status ==
                                       "driver accept") {
-                                    String url =
-                                        "https://www.google.com/maps/dir/?api=1&origin=${lat.toString()},${long.toString()}&destination=${widget.model.itemList![widget.index].sellerLatitude},${widget.model.itemList![widget.index].sellerLongitude}&travel_mode=driving&dir_action=navigate";
+                                    /*String url =
+                                        "https://www.google.com/maps/dir/?api=1&origin=${lat.toString()},${long.toString()}&destination=${widget.model.itemList![widget.index].sellerLatitude},${widget.model.itemList![widget.index].sellerLongitude}&travel_mode=driving&dir_action=navigate";*/
+                                    String url = "https://www.google.com/maps/dir/?api=1&origin=22.74697,75.8980008&destination=22.7177,75.8545&travel_mode=driving&dir_action=navigate";
                                     print("this is a dropPoint-------------->${url}");
                                     launch(url);
-                                    print(
-                                        '____Som______${widget.model.itemList![widget.index].status}_________');
+
                                     // Navigator.push(
                                     //     context,
                                     //     MaterialPageRoute(

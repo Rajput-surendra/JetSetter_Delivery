@@ -124,7 +124,7 @@ class CommanDesingWidget extends StatelessWidget {
                       if (homeProvider!.all != null) {
                         return homeProvider!.all!;
                       } else {
-                        return "";
+                        return "0";
                       }
                     // } else if (index == 2) {
                     //   if (homeProvider!.picked != null) {

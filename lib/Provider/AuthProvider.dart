@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'package:deliveryboy_multivendor/Helper/color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../Helper/ApiBaseHelper.dart';
 import '../Repository/AuthRepository.dart';
 import '../Provider/signupProvider.dart';
@@ -8,6 +10,7 @@ import '../Screens/Authentication/Login/LoginScreen.dart';
 import '../Screens/Authentication/otp_screen.dart';
 import '../Widget/api.dart';
 import '../Widget/parameterString.dart';
+import 'loginProvider.dart';
 
 class AuthenticationProvider extends ChangeNotifier {
   // value for parameter
@@ -95,8 +98,22 @@ class AuthenticationProvider extends ChangeNotifier {
             ),
           );
         } else {
-          // await buttonController!.reverse();
-          setSnackbarScafold(scaffoldMessengerKey, context, msg!);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                msg ?? '',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: fontColor,
+                ),
+              ),
+              duration: const Duration(
+                milliseconds: 3000,
+              ),
+              backgroundColor: lightWhite,
+              elevation: 1.0,
+            ),
+          );
           updateNow();
         }
       },

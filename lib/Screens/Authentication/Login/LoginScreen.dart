@@ -34,8 +34,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final mobileController = TextEditingController();
   final passwordController = TextEditingController();
-  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
-      GlobalKey<ScaffoldMessengerState>();
+  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
   FocusNode? passFocus, monoFocus = FocusNode();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   setStateNow() {
@@ -99,7 +98,14 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
     isNetworkAvail = await isNetworkAvailable();
     if (isNetworkAvail) {
       context.read<AuthenticationProvider>().sendOTP(context,
-          scaffoldMessengerKey, setStateNow, fcmToken, mobileController.text);
+          scaffoldMessengerKey, setStateNow, fcmToken, mobileController.text).then((value) {
+           Future.delayed(Duration(seconds: 3),() {
+             buttonController?.reverse();
+             setState(() {
+
+             });
+           },);
+      });
     } else {
       Future.delayed(const Duration(seconds: 2)).then(
         (_) async {
@@ -479,7 +485,6 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
               btnAnim: buttonSqueezeanimation,
               btnCntrl: buttonController,
               onBtnSelected: () async {
-                print('__________sadasdsadsad_________');
                 validateAndSubmit();
               },
             );
@@ -631,7 +636,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
 
 setSnackbarScafold(
     GlobalKey<ScaffoldMessengerState> scafoldkey, contex, String msg) {
-  scafoldkey.currentState!.showSnackBar(
+  scafoldkey.currentState?.showSnackBar(
     SnackBar(
       content: Text(
         msg,

@@ -335,7 +335,6 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
       att = orderItem.attr_name!.split(',');
       val = orderItem.varient_values!.split(',');
     }
-    print('____ddd______${orderItem.status}_________');
 
     return Padding(
         padding: const EdgeInsets.only(top: 10.0),
@@ -544,8 +543,7 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
                                                 left: 5.0),
                                             child: Text(
                                               () {
-                                                print(
-                                                    '____sdsddsssd______${orderItem.status}_________');
+
                                                 if (StringValidation.capitalize(
                                                         orderItem.status!) ==
                                                     "Received") {
@@ -699,9 +697,7 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
                                                           (dynamic newValue) {
                                                         setState(
                                                           () {
-                                                            print(newValue
-                                                                    .toString() +
-                                                                "________________________");
+
                                                             if (newValue
                                                                     .toString() ==
                                                                 "picked up") {

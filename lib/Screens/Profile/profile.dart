@@ -195,13 +195,15 @@ class StateProfile extends State<Profile> with TickerProviderStateMixin {
           }
         }
         print("request field****${request.fields}****${request.files}");
+        print("request field****${request.url}");
 
         var response = await request.send();
         var responseData = await response.stream.toBytes();
         var responseString = String.fromCharCodes(responseData);
 
+        print('_______${responseString}');
+
         var getdata = json.decode(responseString);
-        print("getdata******$getdata*******${response.statusCode}");
         bool error = getdata["error"];
         String? msg = getdata['message'];
         if (!error) {
@@ -726,8 +728,8 @@ class StateProfile extends State<Profile> with TickerProviderStateMixin {
 
   void _imgFromGallery() async {
     List<XFile>? pickedFileList = await ImagePicker().pickMultiImage(
-      maxWidth: 1800,
-      maxHeight: 1800,
+      maxWidth: 100,
+      maxHeight: 100,
     );
     licenseImages.clear();
     if (pickedFileList.isNotEmpty) {
